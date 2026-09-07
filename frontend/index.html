@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serverless Contact Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Contact Form Card -->
+        <div class="card">
+            <div class="card-header">
+                <h2>تواصل معنا</h2>
+                <p>إرسال رسالة مباشرة عبر بنية Serverless على AWS</p>
+            </div>
+            
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">الاسم الكامل</label>
+                    <input type="text" id="name" placeholder="أدخل اسمك الكريم" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input type="email" id="email" placeholder="example@domain.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">الرسالة</label>
+                    <textarea id="message" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn">
+                    <span id="btnText">إرسال الرسالة</span>
+                    <span id="spinner" class="spinner hidden"></span>
+                </button>
+            </form>
+
+            <div id="statusMessage" class="status-message hidden"></div>
+        </div>
+
+        <!-- Dashboard Stats Card (GET /stats) -->
+        <div class="card stats-card">
+            <div class="card-header">
+                <h3>لوحة الإحصائيات (GET /stats)</h3>
+                <button id="refreshStatsBtn" class="btn-secondary">تحديث البيانات</button>
+            </div>
+            
+            <div class="stats-summary">
+                <div class="stat-box">
+                    <span class="stat-value" id="totalCount">0</span>
+                    <span class="stat-label">إجمالي الرسائل</span>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الاسم</th>
+                            <th>البريد</th>
+                            <th>الرسالة</th>
+                            <th>التاريخ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="statsTableBody">
+                        <tr>
+                            <td colspan="4" class="text-center">اضغط على تحديث البيانات لجلب الرسائل</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
